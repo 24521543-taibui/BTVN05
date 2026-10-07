@@ -1,0 +1,200 @@
+2026-10-07 22:31:33,473 ERROR Traceback (most recent call last):
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_transports\default.py", line 98, in map_httpcore_exceptions
+    yield
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_transports\default.py", line 245, in handle_request
+    resp = self._pool.handle_request(req)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 242, in handle_request
+    raise exc from None
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_sync\connection_pool.py", line 224, in handle_request
+    response = connection.handle_request(pool_request.request)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_sync\connection.py", line 94, in handle_request
+    raise exc
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_sync\connection.py", line 74, in handle_request
+    stream = self._connect(request)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_sync\connection.py", line 140, in _connect
+    stream = stream.start_tls(**kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_backends\sync.py", line 154, in start_tls
+    with map_exceptions(exc_map):
+         ~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpcore2\_exceptions.py", line 17, in map_exceptions
+    raise to_exc(exc) from exc
+httpcore2.ConnectError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_base_client.py", line 1148, in request
+    response = self._send_request(
+        request,
+        stream=stream or self._should_stream_response_body(request=request),
+        **kwargs,
+    )
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_client.py", line 601, in _send_request
+    response = self._send_with_auth_retry(request, stream=stream, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_client.py", line 580, in _send_with_auth_retry
+    response = super()._send_request(request, stream=stream, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_base_client.py", line 1069, in _send_request
+    return self._client.send(request, stream=stream, **kwargs)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_client.py", line 980, in send
+    response = self._send_handling_auth(
+        request,
+    ...<2 lines>...
+        history=[],
+    )
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_client.py", line 1008, in _send_handling_auth
+    response = self._send_handling_redirects(
+        request,
+        follow_redirects=follow_redirects,
+        history=history,
+    )
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_client.py", line 1043, in _send_handling_redirects
+    response = self._send_single_request(request)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_client.py", line 1076, in _send_single_request
+    response = transport.handle_request(request)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_transports\default.py", line 244, in handle_request
+    with map_httpcore_exceptions():
+         ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\contextlib.py", line 162, in __exit__
+    self.gen.throw(value)
+    ~~~~~~~~~~~~~~^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\httpx2\_transports\default.py", line 115, in map_httpcore_exceptions
+    raise mapped_exc(message) from exc
+httpx2.ConnectError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1979, in _generate
+    raw_response = self.client.with_raw_response.create(**payload)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_legacy_response.py", line 369, in wrapped
+    return cast(LegacyAPIResponse[R], func(*args, **kwargs))
+                                      ~~~~^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_utils\_utils.py", line 298, in wrapper
+    return func(*args, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\resources\chat\completions\completions.py", line 1318, in create
+    return self._post(
+           ~~~~~~~~~~^
+        "/chat/completions",
+        ^^^^^^^^^^^^^^^^^^^^
+    ...<53 lines>...
+        stream_cls=Stream[ChatCompletionChunk],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_base_client.py", line 1440, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\openai\_base_client.py", line 1183, in request
+    raise APIConnectionError(request=request) from err
+openai.APIConnectionError: Connection error.
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\stage-02-skills\app.py", line 457, in run_turn
+    for mode, chunk in stream:
+                       ^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\pregel\main.py", line 3034, in stream
+    for _ in runner.tick(
+             ~~~~~~~~~~~^
+        [t for t in loop.tasks.values() if not t.writes],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        schedule_task=loop.accept_push,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ):
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 345, in tick
+    _panic_or_proceed(
+    ~~~~~~~~~~~~~~~~~^
+        futures.done.union(f for f, t in futures.items() if t is not None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        handled_futures=handled_futures,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\pregel\_runner.py", line 689, in _panic_or_proceed
+    raise exc
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\pregel\_executor.py", line 80, in done
+    task.result()
+    ~~~~~~~~~~~^^
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 443, in result
+    return self.__get_result()
+           ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\_base.py", line 395, in __get_result
+    raise self._exception
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 86, in run
+    result = ctx.run(self.task)
+  File "C:\Users\TaiBui\AppData\Local\Programs\Python\Python314\Lib\concurrent\futures\thread.py", line 73, in run
+    return fn(*args, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\pregel\_retry.py", line 617, in run_with_retry
+    return task.proc.invoke(task.input, config)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 707, in invoke
+    input = context.run(step.invoke, input, config, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langgraph\_internal\_runnable.py", line 447, in invoke
+    ret = self.func(*args, **kwargs)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain\agents\factory.py", line 1543, in model_node
+    result = wrap_model_call_handler(request, _execute_model_sync)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain\agents\factory.py", line 327, in normalized_single
+    return _to_composed_result(single_handler(request, handler))
+                               ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langsmith\run_helpers.py", line 849, in wrapper
+    function_result = run_container["context"].run(
+        func, *args, **kwargs
+    )
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\stage-02-skills\observer.py", line 132, in wrap_model_call
+    response = handler(request)  # gọi đúng một lần
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain\agents\factory.py", line 1506, in _execute_model_sync
+    output = model_.invoke(messages)
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_core\runnables\base.py", line 6014, in invoke
+    return self.bound.invoke(
+           ~~~~~~~~~~~~~~~~~^
+        input,
+        ^^^^^^
+        self._merge_configs(config),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        **{**self.kwargs, **kwargs},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 488, in invoke
+    self.generate_prompt(
+    ~~~~~~~~~~~~~~~~~~~~^
+        [self._convert_input(input)],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    ).generations[0][0],
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1877, in generate_prompt
+    return self.generate(prompt_messages, stop=stop, callbacks=callbacks, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 1684, in generate
+    self._generate_with_cache(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^
+        m,
+        ^^
+    ...<2 lines>...
+        **kwargs,
+        ^^^^^^^^^
+    )
+    ^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_core\language_models\chat_models.py", line 2022, in _generate_with_cache
+    result = self._generate(
+        messages, stop=stop, run_manager=run_manager, **kwargs
+    )
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 1984, in _generate
+    _handle_openai_api_error(e)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "D:\Downloads\agent-tools-skills-lab\agent-tools-skills-lab\.venv\Lib\site-packages\langchain_openai\chat_models\base.py", line 744, in _handle_openai_api_error
+    raise OpenAIConnectionError(message=e.message, request=e.request) from e
+langchain_openai.chat_models.base.OpenAIConnectionError: Connection error.
+During task with name 'model' and id '2da9c1ce-58e8-a286-f9c9-5209b09179b2'
+
