@@ -1,0 +1,34 @@
+$ uv run pytest tests/test_check_csv.py -v   (stage-04-script-skill, chạy trong WSL2 Ubuntu)
+tests/test_check_csv.py::test_fixture_statistics PASSED                  [  3%]
+tests/test_check_csv.py::test_workload_totals_and_overloaded_owners[8-overloaded0] PASSED [  7%]
+tests/test_check_csv.py::test_workload_totals_and_overloaded_owners[9-overloaded1] PASSED [ 11%]
+tests/test_check_csv.py::test_first_occurrence_with_invalid_hours_still_blocks_later_duplicate PASSED [ 15%]
+tests/test_check_csv.py::test_each_excluded_row_listed_once_with_all_reasons_in_order PASSED [ 19%]
+tests/test_check_csv.py::test_values_are_trimmed_and_owner_case_is_kept PASSED [ 23%]
+tests/test_check_csv.py::test_total_equal_to_decimal_threshold_is_not_overloaded PASSED [ 26%]
+tests/test_check_csv.py::test_missing_max_hours_exit_non_zero PASSED     [ 30%]
+tests/test_check_csv.py::test_invalid_max_hours_exit_non_zero[-1] PASSED [ 34%]
+tests/test_check_csv.py::test_invalid_max_hours_exit_non_zero[abc] PASSED [ 38%]
+tests/test_check_csv.py::test_invalid_max_hours_exit_non_zero[nan] PASSED [ 42%]
+tests/test_check_csv.py::test_invalid_max_hours_exit_non_zero[inf] PASSED [ 46%]
+tests/test_check_csv.py::test_invalid_max_hours_exit_non_zero[] PASSED   [ 50%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[NaN] PASSED [ 53%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[nan] PASSED [ 57%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[Infinity] PASSED [ 61%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[-inf] PASSED [ 65%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[-1] PASSED [ 69%]
+tests/test_check_csv.py::test_non_finite_negative_or_empty_hours_rejected[] PASSED [ 73%]
+tests/test_check_csv.py::test_clean_data_exit_0_without_issues PASSED    [ 76%]
+tests/test_check_csv.py::test_missing_file_exit_1 PASSED                 [ 80%]
+tests/test_check_csv.py::test_missing_column_exit_1 PASSED               [ 84%]
+tests/test_check_csv.py::test_parse_error_exit_1 PASSED                  [ 88%]
+tests/test_check_csv.py::test_script_does_not_modify_input[tasks.csv] PASSED [ 92%]
+tests/test_check_csv.py::test_script_does_not_modify_input[workload.csv] PASSED [ 96%]
+tests/test_check_csv.py::test_script_does_not_modify_input[workload-edge.csv] PASSED [100%]
+============================== 26 passed in 3.42s ==============================
+
+$ uv run pytest -q   (stage-04-script-skill)
+75 passed in 15.78s
+
+$ uv run pytest -q   (stage-03-bash)
+48 passed in 8.77s

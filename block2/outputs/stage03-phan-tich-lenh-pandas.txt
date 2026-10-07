@@ -1,0 +1,40 @@
+# Tái hiện lệnh pandas mà agent stage 03 đã chạy (trace 20261008-010946_6602f226_turn01_e7c4031a.jsonl)
+# Chạy lại trên workspace của stage 03, chỉ đọc file, không sửa dữ liệu.
+
+$ cat data/workload.csv   (số dòng theo file, header là dòng 1)
+1: task_id,owner,hours
+2: T01,Lan,4
+3: T02,Lan,5
+4: T03,Minh,3
+5: T04,Minh,abc
+6: T02,Lan,5
+7: T05,,2
+
+## 1. Lệnh của agent, trên data/workload.csv
+$ python -c "import pandas as pd; df = pd.read_csv('data/workload.csv'); total_hours = df.groupby('owner')['hours'].sum(); print(total_hours)"
+owner
+Lan      455
+Minh    3abc
+Name: hours, dtype: str
+
+dtype của cột hours (vì có giá trị 'abc'):
+str | các giá trị: ['4', '5', '3', 'abc', '5', '2']
+
+Dòng có owner trống (dòng 7) có nằm trong kết quả groupby không?
+owner có trong groupby: ['Lan', 'Minh']
+dòng owner trống:
+  task_id owner hours
+5     T05   NaN     2
+
+## 2. Cùng lệnh, trên bản sao đã sửa hours 'abc' thành 0 (để thấy riêng lỗi cộng trùng)
+$ python -c "... pd.read_csv('workload-bo-abc.csv') ... groupby('owner')['hours'].sum()"
+owner
+Lan     14
+Minh     3
+Name: hours, dtype: int64
+
+## 3. Cùng bản sao, nhưng loại task_id trùng TRƯỚC khi cộng (giữ lần xuất hiện đầu tiên)
+owner
+Lan     9
+Minh    3
+Name: hours, dtype: int64

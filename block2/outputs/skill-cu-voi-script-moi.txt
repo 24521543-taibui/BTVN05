@@ -1,0 +1,7 @@
+# Lệnh lấy nguyên văn từ SKILL.md gốc của bài mẫu (không có --max-hours), chạy với script đã sửa
+$ python skills/csv-quality/scripts/check_csv.py --input data/tasks.csv
+exit code: 2
+stdout: 0 bytes
+stderr:
+    usage: check_csv.py [-h] --input INPUT --max-hours MAX_HOURS
+    check_csv.py: error: the following arguments are required: --max-hours

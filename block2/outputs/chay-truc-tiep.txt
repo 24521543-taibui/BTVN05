@@ -1,0 +1,42 @@
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload.csv --max-hours 8
+exit code: 0
+stdout: block2/outputs/json-max-8.json (1222 bytes)
+stderr:
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload.csv --max-hours 9
+exit code: 0
+stdout: block2/outputs/json-max-9.json (1162 bytes)
+stderr:
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload-edge.csv --max-hours 0
+exit code: 0
+stdout: block2/outputs/json-edge-max-0.json (904 bytes)
+stderr:
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload.csv
+exit code: 2
+stdout: 0 bytes
+stderr:
+    usage: check_csv.py [-h] --input INPUT --max-hours MAX_HOURS
+    check_csv.py: error: the following arguments are required: --max-hours
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload.csv --max-hours -1
+exit code: 2
+stdout: 0 bytes
+stderr:
+    usage: check_csv.py [-h] --input INPUT --max-hours MAX_HOURS
+    check_csv.py: error: argument --max-hours: '-1' không phải số hữu hạn không âm.
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/workload.csv --max-hours abc
+exit code: 2
+stdout: 0 bytes
+stderr:
+    usage: check_csv.py [-h] --input INPUT --max-hours MAX_HOURS
+    check_csv.py: error: argument --max-hours: 'abc' không phải số hữu hạn không âm.
+
+$ uv run python workspace/skills/csv-quality/scripts/check_csv.py --input workspace/data/khong-co.csv --max-hours 8
+exit code: 1
+stdout: 0 bytes
+stderr:
+    ERROR: Không đọc được file workspace/data/khong-co.csv: No such file or directory
+
